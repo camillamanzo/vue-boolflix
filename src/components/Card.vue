@@ -10,7 +10,10 @@
             <li v-else >Original language: {{ element.original_language.toUpperCase() }}</li>
             
             <li>Original title: {{ element.original_title }}</li>
-            <li>Ratings: {{ element.vote_average / 2 }}/5</li>
+            <li>
+                <span><i v-for="index in Math.round((element.vote_average)/2)" :key="index" class="fas fa-star yellow-text"></i></span>
+                <span><i v-for="index in 5 - Math.round((element.vote_average)/2)" :key="index" class="fas fa-star"></i></span> 
+            </li>
       </ul>
 
   </div>
@@ -39,6 +42,9 @@ ul{
     }
     .flag-img{
         width: 30px;
+    }
+    .yellow-text{
+      color: rgb(255, 208, 0);
     }
 }
 
