@@ -18,7 +18,7 @@ export default {
   name: "Main",
   props: {
     movies : Array,
-    series : Array
+    series : Array,
   },
   components:{
     Card,
