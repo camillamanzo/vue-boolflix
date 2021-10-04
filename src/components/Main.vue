@@ -2,7 +2,10 @@
   <div>
     <div class="container">
       <div class="row">
-        <Card v-for="movie in movies" :key="movie.id" :movie="movie"/>
+        <h1 class="text-center mb-3">Movies with this title:</h1>
+        <Card v-for="element in movies" :key="element.id" :element="element"/>
+        <h1  class="text-center mb-3">TV Series with this title:</h1>
+        <Card v-for="element in series" :key="element.id" :element="element"/>
       </div>
     </div>
   </div>
@@ -14,7 +17,8 @@ import Card from "./Card";
 export default {
   name: "Main",
   props: {
-    movies : Array
+    movies : Array,
+    series : Array
   },
   components:{
     Card,

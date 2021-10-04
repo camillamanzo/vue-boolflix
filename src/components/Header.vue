@@ -3,7 +3,7 @@
       <div>
           <img src="../assets/boolflix-logo.png" alt="boolflix logo">
       </div>
-    <input type="text" placeholder="Search title" v-model="needle">
+    <input type="text" placeholder="Search title" v-model="needle" @keyup.enter="$emit('search', needle)" class="mb-4">
     <button  @click="$emit('search', needle)">Search</button>
   </header>
 </template>
@@ -26,4 +26,12 @@ export default {
 @import "../style/variables.scss";
 @import "../style/general.scss";
 
+header{
+    text-align: center;
+
+    img{
+        padding-bottom: 20px;
+        margin: auto;
+    }
+}
 </style>
