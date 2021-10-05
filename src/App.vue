@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @search="search"/>
-    <Main :movies="movies" :series="series"/>
+    <Main :movies="movies" :series="series" :home="home"/>
   </div>
 </template>
 
@@ -15,6 +15,16 @@ export default {
   components: {
     Header,
     Main,
+  },
+  data() {
+    return{
+      movieUrl: "https://api.themoviedb.org/3/search/movie",
+      seriesUrl: "https://api.themoviedb.org/3/search/tv",
+      apikey: "8a80fdb66a4a7b020a3f11d8964099ab",
+      movies: [],
+      series: [],
+      home: [],
+    }
   },
   methods: {
     search(needle){
@@ -41,27 +51,19 @@ export default {
         })
     }
   },
-  data() {
-    return{
-      movieUrl: "https://api.themoviedb.org/3/search/movie",
-      seriesUrl: "https://api.themoviedb.org/3/search/tv",
-      apikey: "8a80fdb66a4a7b020a3f11d8964099ab",
-      movies: [],
-      series: [],
-    }
-  }
+  created(){
+      axios.get("https://api.themoviedb.org/3/search/movie?api_key=8a80fdb66a4a7b020a3f11d8964099ab&query=back+to+the+future")
+      .then((response) => { 
+      this.home = [...response.data.results]
+      console.log(this.home)
+    })
+  },
+  
 }
 </script>
 
 <style lang="scss">
 @import "./style/variables.scss";
 @import "./style/general.scss";
-#app {
 
-
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin-top: 60px;
-}
 </style>
