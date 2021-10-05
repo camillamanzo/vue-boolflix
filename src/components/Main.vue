@@ -1,12 +1,16 @@
 <template>
   <main>
     <div class="fluid-container">
-      <div class="row">
-        <!-- Main section only visible at the beginning -->
+      <!-- Main section only visible at the beginning -->
+      <div class="row" id="home-section">
         <Home :class="needle > 0 ? d-none : d-block" v-for="movie in home" :key="movie.id" :movie="movie"/>
-        <!-- <h1 class="text-center mb-3">Movies with this title:</h1> -->
+      </div>
+      <!-- Movies section -->
+      <div class="row" id="movies-section">
         <Card v-for="element in movies" :key="element.id" :element="element"/>
-        <!-- <h1  class="text-center mb-3">TV Series with this title:</h1> -->
+      </div>
+      <!-- Series section -->
+      <div class="row" id="series-section">
         <Card v-for="element in series" :key="element.id" :element="element"/>
       </div>
     </div>

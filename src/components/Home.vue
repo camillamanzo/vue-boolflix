@@ -1,10 +1,11 @@
 <template>
-    <div v-if="!needle" class="col-3 poster-wrapper" id="home-section">
+    <div class="col-3 poster-wrapper">
         <ul class="p-4 ">
+            <!-- poster image .d-none when hover -->
             <li><img class="poster-img img-fluid" :src="(thumbsUrlHome) + movie.poster_path" :alt="movie.title"></li>
             <li>
             <!-- info section only displayed on hover. -->
-                <ul>
+                <ul class="hover-display">
                     <li><h2>{{ movie.title }}</h2></li>
                     <li>Language: {{ movie.original_language.toUpperCase() }} <img class="flag-img" src="../assets/uk-flag.png" alt="uk flag"></li>
                     <li>Original title: {{ movie.original_title }}</li>
@@ -51,5 +52,13 @@ ul{
       color: rgb(255, 208, 0);
     }
 }
-
+.poster-wrapper:hover .poster-img{
+      display: none;
+    }
+    .hover-display{
+      display: none;
+    }
+    .poster-wrapper:hover .hover-display{
+      display: block;
+    }
 </style>
